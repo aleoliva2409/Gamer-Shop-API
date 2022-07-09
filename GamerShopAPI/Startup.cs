@@ -1,4 +1,5 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace GamerShopAPI
 {
@@ -35,10 +36,10 @@ namespace GamerShopAPI
                 }).CreateMapper()
             );*/
 
-            /*services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                sqlServerOptions => sqlServerOptions.UseNetTopologySuite()));
-            */
+            services.AddDbContext<ApplicationDbContext>(opt =>
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                //sqlServerOptions => sqlServerOptions.UseNetTopologySuite()));
+
 
             /*services.AddIdentity<IdentityUser, IdentityRole>()
               .AddEntityFrameworkStores<ApplicationDbContext>()
