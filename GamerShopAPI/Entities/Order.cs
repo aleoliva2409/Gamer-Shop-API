@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using static GamerShopAPI.Utils.EnumUtils;
 
 namespace GamerShopAPI.Entities
 {
@@ -7,9 +8,14 @@ namespace GamerShopAPI.Entities
         public int Id { get; set; }
 
         [Required]
-        public int Quantity { get; set; }
-
-        [Required]
-        public string Status { get; set; }
+        public OrderStatus OrderStatus { get; set; }
+        public string ShippingName { get; set; }
+        public string ShippingLastname { get; set; }
+        public string ShippingStatus { get; set; }
+        public string ShippingCost { get; set; }
+        public string ShippingAddress { get; set; }
+        public string ShippingCity { get; set; }
+        public string ShippingZip { get; set; }
+        public string ShippingComments { get; set; }
     }
 }
