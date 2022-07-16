@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using static GamerShopAPI.Utils.EnumUtils;
 
 namespace GamerShopAPI.Entities
@@ -9,6 +10,7 @@ namespace GamerShopAPI.Entities
 
         [Required]
         public OrderStatus OrderStatus { get; set; }
+
         public string ShippingName { get; set; }
         public string ShippingLastname { get; set; }
         public string ShippingStatus { get; set; }
@@ -17,5 +19,8 @@ namespace GamerShopAPI.Entities
         public string ShippingCity { get; set; }
         public string ShippingZip { get; set; }
         public string ShippingComments { get; set; }
+        public string UserId { get; set; }
+        public IdentityUser User { get; set; }
+        public List<OrderProduct> OrdersProducts { get; set; }
     }
 }

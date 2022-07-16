@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GamerShopAPI.Entities
+namespace GamerShopAPI.DTOs
 {
-    public class Product
+    public class ProductDTO
     {
         public int Id { get; set; }
 
@@ -22,12 +22,6 @@ namespace GamerShopAPI.Entities
         [Required]
         public int Stock { get; set; }
 
-        public int? CategoryId { get; set; }
-        public Category Category { get; set; }
-
-        [Required]
-        public int SubcategoryId { get; set; }
-        public Subcategory Subcategory { get; set; }
-        public List<OrderProduct> OrdersProducts { get; set; }
+        public CategoryDTO Category { get; set; }
     }
 }

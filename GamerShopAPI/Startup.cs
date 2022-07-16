@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 namespace GamerShopAPI
@@ -14,11 +15,11 @@ namespace GamerShopAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
-            /*services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(Startup));
             // guardado en azure
             // enganchamos la interfaz de IStoreFiles con el servicio StoreFilesAzure,
             // entonce al inyectar el servicio, se ejecuta el constructor StoreFilesAzure(IConfiguration configuration)
-            services.AddTransient<IStoreFiles, StoreFilesAzure>();
+            /*services.AddTransient<IStoreFiles, StoreFilesAzure>();
             // guardado local
             // services.AddTransient<IStoreFiles, StoreFilesLocal>();
             services.AddHttpContextAccessor();
@@ -38,14 +39,14 @@ namespace GamerShopAPI
 
             services.AddDbContext<ApplicationDbContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-                //sqlServerOptions => sqlServerOptions.UseNetTopologySuite()));
+            //sqlServerOptions => sqlServerOptions.UseNetTopologySuite()));
 
 
-            /*services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<IdentityUser, IdentityRole>()
               .AddEntityFrameworkStores<ApplicationDbContext>()
               .AddDefaultTokenProviders();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            /*services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                .AddJwtBearer(options =>
                    options.TokenValidationParameters = new TokenValidationParameters
                    {

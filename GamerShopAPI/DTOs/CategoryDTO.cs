@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GamerShopAPI.Entities
+namespace GamerShopAPI.DTOs
 {
-    public class Category
+    public class CategoryDTO
     {
         public int Id { get; set; }
 
@@ -10,6 +10,6 @@ namespace GamerShopAPI.Entities
         [StringLength(50)]
         public string Name { get; set; }
 
-        public List<Subcategory> Subcategory { get; set; }
+        public List<SubcategoryDTO> Subcategories { get; set; }
     }
 }
