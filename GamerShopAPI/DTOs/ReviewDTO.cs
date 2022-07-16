@@ -2,12 +2,12 @@
 
 namespace GamerShopAPI.DTOs
 {
-    public class CategoryDTO
+    public class ReviewDTO
     {
         public int Id { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string Name { get; set; }
+        [StringLength(140)]
+        public string Comment { get; set; }
     }
 }

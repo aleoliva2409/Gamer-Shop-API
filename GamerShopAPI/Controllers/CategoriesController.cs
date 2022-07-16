@@ -20,11 +20,11 @@ namespace GamerShopAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<CategoryDTO>>> Get()
+        public async Task<ActionResult<List<CategoryWithSubcategoriesDTO>>> Get()
         {
             var categoriesDB = await dbContext.Categories.Include(c => c.Subcategory).ToListAsync();
 
-            return mapper.Map<List<CategoryDTO>>(categoriesDB);
+            return mapper.Map<List<CategoryWithSubcategoriesDTO>>(categoriesDB);
         }
     }
 }

@@ -22,7 +22,10 @@ namespace GamerShopAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ProductDTO>>> Get()
         {
-            var productsDB = await dbContext.Products.Include(p => p.Category).ToListAsync();
+            var productsDB = await dbContext.Products
+                .Include(p => p.Category)
+                .Include(p => p.Subcategory)
+                .ToListAsync();
 
             return mapper.Map<List<ProductDTO>>(productsDB);
         }

@@ -8,8 +8,13 @@ namespace GamerShopAPI.Utils
     {
         public AutoMapperProfile()
         {
-            CreateMap<Category, CategoryDTO>()
+            CreateMap<Category, CategoryDTO>();
+            CreateMap<Category, CategoryWithSubcategoriesDTO>()
                 .ForMember(c => c.Subcategories, opt => opt.MapFrom(MapSubcategories));
+
+            CreateMap<Subcategory, SubcategoryDTO>();
+
+            CreateMap<Review, ReviewDTO>();
 
             CreateMap<Product, ProductDTO>();
         }

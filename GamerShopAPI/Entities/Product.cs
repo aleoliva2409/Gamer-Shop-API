@@ -24,10 +24,9 @@ namespace GamerShopAPI.Entities
 
         public int? CategoryId { get; set; }
         public Category Category { get; set; }
-
-        [Required]
         public int SubcategoryId { get; set; }
         public Subcategory Subcategory { get; set; }
+        public List<Review> Reviews { get; set; }
         public List<OrderProduct> OrdersProducts { get; set; }
     }
 }

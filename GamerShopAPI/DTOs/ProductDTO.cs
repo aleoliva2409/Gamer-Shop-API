@@ -23,5 +23,6 @@ namespace GamerShopAPI.DTOs
         public int Stock { get; set; }
 
         public CategoryDTO Category { get; set; }
+        public SubcategoryDTO Subcategory { get; set; }
     }
 }
