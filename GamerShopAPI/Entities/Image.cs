@@ -1,6 +1,8 @@
-﻿namespace GamerShopAPI.Entities
+﻿using GamerShopAPI.Utils;
+
+namespace GamerShopAPI.Entities
 {
-    public class Image
+    public class Image : IId
     {
         public int Id { get; set; }
         public string Url { get; set; }

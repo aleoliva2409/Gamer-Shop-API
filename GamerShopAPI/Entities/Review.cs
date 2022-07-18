@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using GamerShopAPI.Utils;
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
 namespace GamerShopAPI.Entities
 {
-    public class Review
+    public class Review : IId
     {
         public int Id { get; set; }
 

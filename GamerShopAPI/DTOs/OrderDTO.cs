@@ -1,11 +1,10 @@
-﻿using GamerShopAPI.Utils;
-using Microsoft.AspNetCore.Identity;
+﻿using GamerShopAPI.Entities;
 using System.ComponentModel.DataAnnotations;
 using static GamerShopAPI.Utils.EnumUtils;
 
-namespace GamerShopAPI.Entities
+namespace GamerShopAPI.DTOs
 {
-    public class Order : IId
+    public class OrderDTO
     {
         public int Id { get; set; }
 
@@ -20,8 +19,5 @@ namespace GamerShopAPI.Entities
         public string ShippingCity { get; set; }
         public string ShippingZip { get; set; }
         public string ShippingComments { get; set; }
-        public string UserId { get; set; }
-        public IdentityUser User { get; set; }
-        public List<OrderProduct> OrdersProducts { get; set; }
     }
 }

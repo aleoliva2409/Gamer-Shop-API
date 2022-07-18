@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GamerShopAPI.DTOs;
+using GamerShopAPI.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,24 +8,22 @@ namespace GamerShopAPI.Controllers
 {
     [ApiController]
     [Route("/api/categories")]
-    public class CategoriesController : ControllerBase
+    public class CategoriesController : CustomController
     {
         private readonly ApplicationDbContext dbContext;
-        private readonly IMapper mapper;
 
         public CategoriesController(ApplicationDbContext dbContext,
-            IMapper mapper)
+            IMapper mapper) : base(dbContext, mapper)
         {
             this.dbContext = dbContext;
-            this.mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<CategoryWithSubcategoriesDTO>>> Get()
+        public async Task<ActionResult<List<CategoryWithSubcategoriesDTO>>> Get
+            ([FromQuery] PaginationDTO paginationDTO)
         {
-            var categoriesDB = await dbContext.Categories.Include(c => c.Subcategory).ToListAsync();
-
-            return mapper.Map<List<CategoryWithSubcategoriesDTO>>(categoriesDB);
+            var queryable = dbContext.Categories.Include(c => c.Subcategory).AsQueryable();
+            return await Get<Category, CategoryWithSubcategoriesDTO>(paginationDTO, queryable);
         }
     }
 }

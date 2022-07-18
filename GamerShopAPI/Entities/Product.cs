@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GamerShopAPI.Utils;
+using System.ComponentModel.DataAnnotations;
 
 namespace GamerShopAPI.Entities
 {
-    public class Product
+    public class Product : IId
     {
         public int Id { get; set; }
 

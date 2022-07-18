@@ -1,39 +1,38 @@
 ﻿using AutoMapper;
 using GamerShopAPI.DTOs;
+using GamerShopAPI.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace GamerShopAPI.Controllers
 {
     [ApiController]
     [Route("/api/products/{productId:int}/reviews")]
-    public class ReviewsController : ControllerBase
+    public class ReviewsController : CustomController
     {
         private readonly ApplicationDbContext dbContext;
-        private readonly IMapper mapper;
 
         public ReviewsController(ApplicationDbContext dbContext,
-            IMapper mapper)
+            IMapper mapper) : base(dbContext, mapper)
         {
             this.dbContext = dbContext;
-            this.mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ReviewDTO>>> Get([FromRoute] int productId)
+        public async Task<ActionResult<List<ReviewDTO>>> Get([FromRoute] int productId,
+            [FromQuery] PaginationDTO paginationDTO)
         {
             var productDB = await dbContext.Products.FindAsync(productId);
 
             if(productDB == null)
             {
-                return BadRequest();
+                return NotFound("Product doesn't exist");
             }
 
-            var reviewsDB = await dbContext.Reviews
+            var queryable = dbContext.Reviews
                 .Where(r => r.ProductId == productId)
-                .ToListAsync();
+                .AsQueryable();
 
-            return mapper.Map<List<ReviewDTO>>(reviewsDB);
+            return await Get<Review, ReviewDTO>(paginationDTO, queryable);
         }
     }
 }
