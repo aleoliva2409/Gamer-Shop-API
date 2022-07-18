@@ -7,11 +7,11 @@ namespace GamerShopAPI.Controllers
 {
     [ApiController]
     [Route("/api/products/{productId:int}/reviews")]
-    public class ReviewsController : CustomController
+    public class ReviewController : CustomController
     {
         private readonly ApplicationDbContext dbContext;
 
-        public ReviewsController(ApplicationDbContext dbContext,
+        public ReviewController(ApplicationDbContext dbContext,
             IMapper mapper) : base(dbContext, mapper)
         {
             this.dbContext = dbContext;

@@ -8,11 +8,11 @@ namespace GamerShopAPI.Controllers
 {
     [ApiController]
     [Route("/api/categories")]
-    public class CategoriesController : CustomController
+    public class CategoryController : CustomController
     {
         private readonly ApplicationDbContext dbContext;
 
-        public CategoriesController(ApplicationDbContext dbContext,
+        public CategoryController(ApplicationDbContext dbContext,
             IMapper mapper) : base(dbContext, mapper)
         {
             this.dbContext = dbContext;

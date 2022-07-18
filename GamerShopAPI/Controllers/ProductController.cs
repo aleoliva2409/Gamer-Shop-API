@@ -8,12 +8,12 @@ namespace GamerShopAPI.Controllers
 {
     [ApiController]
     [Route("/api/products")]
-    public class ProductsController : CustomController
+    public class ProductController : CustomController
     {
         private readonly ApplicationDbContext dbContext;
         private readonly IMapper mapper;
 
-        public ProductsController(ApplicationDbContext dbContext,
+        public ProductController(ApplicationDbContext dbContext,
             IMapper mapper) : base(dbContext, mapper)
         {
             this.dbContext = dbContext;

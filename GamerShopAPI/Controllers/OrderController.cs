@@ -7,11 +7,11 @@ namespace GamerShopAPI.Controllers
 {
     [ApiController]
     [Route("/api/orders")]
-    public class OrdersController : CustomController
+    public class OrderController : CustomController
     {
         private readonly ApplicationDbContext dbContext;
 
-        public OrdersController(ApplicationDbContext dbContext,
+        public OrderController(ApplicationDbContext dbContext,
             IMapper mapper) : base(dbContext, mapper)
         {
             this.dbContext = dbContext;
