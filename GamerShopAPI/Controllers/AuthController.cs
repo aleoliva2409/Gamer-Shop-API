@@ -14,7 +14,7 @@ namespace GamerShopAPI.Controllers
             this.userManager = userManager;
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public async Task Register()
         {
 
@@ -24,6 +24,6 @@ namespace GamerShopAPI.Controllers
         public async Task Login()
         {
 
-        }
+        }*/
     }
 }
