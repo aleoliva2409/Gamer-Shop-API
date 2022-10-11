@@ -63,7 +63,7 @@ namespace GamerShopAPI
                );
 
             services.AddControllers();
-            //.AddNewtonsoftJson();
+                //.AddNewtonsoftJson();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>
             {
@@ -76,14 +76,12 @@ namespace GamerShopAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "GameShopAPI V1");
+                });
             }
-
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "GameShopAPI V1");
-            });
 
             app.UseHttpsRedirection();
 
